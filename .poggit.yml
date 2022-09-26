@@ -5,4 +5,7 @@ branches:
 projects:
   Hardcore:
     path: ""
+    icon: "Hardcore.png"
+    libs:
+      - src: https://poggit.pmmp.io/ci/Vecnavium/FormsUI/FormsUI
 ...
