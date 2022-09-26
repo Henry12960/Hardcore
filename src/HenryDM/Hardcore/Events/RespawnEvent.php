@@ -5,7 +5,7 @@ namespace HenryDM\Hardcore\Events;
 use HenryDM\Hardcore\Main;
 use pocketmine\event\Listener;
 
-use pocketmine\Server;
+use pocketmine\player\Player;
 use pocketmine\event\player\PlayerRespawnEvent;
 use Vecnavium\FormsUI\SimpleForm;
 
@@ -31,7 +31,7 @@ class RespawnEvent implements Listener {
         
                 switch($data) {
                     case 0:
-                        $this->getServer()->dispatchCommand($player, "test");
+                        
                     break;
                     }
         
