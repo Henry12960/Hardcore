@@ -5,8 +5,12 @@ namespace HenryDM\Hardcore\commands;
 use HenryDM\Hardcore\Main;
 use pocketmine\event\Listener;
 
+use pocketmine\Server;
+use pocketmine\player\Player;
+
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\command\ConsoleCommandSender;
 
 use HenryDM\Hardcore\utils\PluginUtils;
 use Vecnavium\FormsUI\SimpleForm;
@@ -32,7 +36,7 @@ class HardcoreCommand implements Listener {
         if($this->getMain()->cfg->get("world-manager-plugin") === "Worlds") {
             if($command->getName() == "hardcore") {
                 if($sender instanceof Player){
-                    $this->openHardcoreML($sender);
+                    $this->openHardcoreWL($sender);
                 } else {
                     $sender->sendMessage("Use this command in game!");
                 }

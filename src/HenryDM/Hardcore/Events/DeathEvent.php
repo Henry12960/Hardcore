@@ -7,6 +7,7 @@ use pocketmine\event\Listener;
 
 use pocketmine\event\player\PlayerDeathEvent;
 use davidglitch04\libEco\libEco;
+use HenryDM\Hardcore\utils\PluginUtils;
 
 class DeathEvent implements Listener {
 

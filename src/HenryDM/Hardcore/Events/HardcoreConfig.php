@@ -4,6 +4,7 @@ namespace HenryDM\Hardcore\Events;
 
 use HenryDM\Hardcore\Main;
 use pocketmine\event\Listener;
+use pocketmine\player\Player;
 
 use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\event\entity\EntityDamageEvent;
@@ -19,6 +20,7 @@ class HardcoreConfig implements Listener {
     }
 
     public function onWorldChange(EntityTeleportEvent $event)  {
+        $player = $event->getPlayer();
         if($this->getMain()->cfg->get("hardcore-world-flight") === false) {
             $player->setAllowFlight(false);
             $player->setFlying(false);
@@ -26,6 +28,8 @@ class HardcoreConfig implements Listener {
     }
 
     public function onDamage(EntityDamageEvent $event)  {
+        $world = $entity->getWorld();
+        $worldName = $world->getFolderName();
         $entity = $event->getEntity();
         if($this->getMain()->cfg->get("hardcore-world-pvp") === false) {
             if($event instanceof EntityDamageByEntityEvent) {
@@ -45,6 +49,9 @@ class HardcoreConfig implements Listener {
     }
 
     public function onDeath(PlayerDeathEvent $event) {
+        $player = $event->getPlayer();
+        $world = $player->getWorld();
+        $worldName = $world->getFolderName();
         if($this->getMain()->cfg->get("other-keep-inventory") === true) {
             if(in_array($worldName, $this->getMain()->cfg->getNested("other-keep-inventory-worlds", []))) {
                 $event->setKeepInventory(true);
@@ -53,6 +60,9 @@ class HardcoreConfig implements Listener {
     }
 
     public function onBreak(BlockBreakEvent $event) {
+        $player = $event->getPlayer();
+        $world = $player->getWorld();
+        $worldName = $world->getFolderName();
         $block = $event->getBlock()->getName();
         if($this->getMain()->cfg->get("restricted-block-break") === true) {
             if (in_array($block, $this->getMain()->cfg->get("restricted-blocks", []))) {
@@ -62,6 +72,9 @@ class HardcoreConfig implements Listener {
     }
 
     public function onPlace(BlockPlaceEvent $event) {
+        $player = $event->getPlayer();
+        $world = $player->getWorld();
+        $worldName = $world->getFolderName();
         $block = $event->getBlock()->getName();
         if($this->getMain()->cfg->get("restricted-block-place") === true) {
             if (in_array($block, $this->getMain()->cfg->get("restricted-blocks", []))) {
