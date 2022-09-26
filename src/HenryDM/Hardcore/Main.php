@@ -16,7 +16,13 @@ use pocketmine\utils\Config;
 
 use HenryDM\Hardcore\Events\DeathEvent;
 
-class Main extends PluginBase implements Listener {   
+class Main extends PluginBase implements Listener {  
+    
+    /*** @var Main|null */
+    private static Main|null $instance;
+
+    /*** @var Config */
+    public Config $cfg;    
 
     public function onEnable() : void {
         $this->saveResource("config.yml");
