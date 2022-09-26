@@ -6,7 +6,7 @@ use HenryDM\Hardcore\Main;
 use pocketmine\event\Listener;
 
 use pocketmine\event\player\PlayerRespawnEvent;
-use HenryDM\Hardcore\libs\jojoe77777\FormAPI\SimpleForm;
+use Vecnavium\FormsUI\SimpleForm;
 
 class RespawnEvent implements Listener {
 
@@ -20,6 +20,10 @@ class RespawnEvent implements Listener {
         $player = $event->getPlayer();        
         $world = $player->getWorld();
         $worldName = $world->getFolderName();
+        $title = $this->getMain()->cfg->get("game-over-form-title");
+        $content = $this->getMain()->cfg->get("game-over-form-content");
+        $exitbutton = $this->getMain()->cfg->get("game-over-form-exit-button");
+        $image = $this->getMain()->cfg->get("game-over-form-exit-button-image");
 # ===============================================
 
         if (in_array($worldName, $this->getMain()->cfg->get("hardcore-worlds", []))) {
@@ -35,9 +39,9 @@ class RespawnEvent implements Listener {
                     }
         
                 });
-                $form->setTitle("TEST");
-                $form->setContent("TEST", 0, );
-                $form->addButton("TEST", 0, "");
+                $form->setTitle($title);
+                $form->setContent($content, 0, );
+                $form->addButton($exitbutton, 0, $image);
                 $form->sendToPlayer($player);
                 return $form;
             }

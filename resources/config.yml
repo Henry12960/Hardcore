@@ -1,1 +1,16 @@
+---
+# =========================
+#      GENERAL CONFIG
+# =========================
+
 hardcore-worlds: ["Hardcore"]
+
+# =========================
+#     GAME OVER CONFIG
+# =========================
+
+game-over-form-title: "Test"
+game-over-form-content: "Test"
+game-over-form-exit-button: "Test"
+game-over-form-exti-button-image: "textures/ui/exit"
+...
