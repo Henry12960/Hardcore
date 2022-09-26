@@ -7,3 +7,13 @@ description: An advanced plugin to create a custom hardcore mode on your pocketm
 website: https://github.com/Henry12960
 
 softdepend: [MultiWorld, Worlds, EconomyAPI, BedrockEconomy]
+
+commands: 
+  hardcore:
+    description: "Join in hardcore gamemode"
+    permission: hardcore.use
+
+permissions:
+  hardcore.use:
+    default: true
+    description: "Permission to join in hardcore mode"    

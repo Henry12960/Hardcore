@@ -3,13 +3,54 @@
 #      GENERAL CONFIG
 # =========================
 
-hardcore-worlds: ["Hardcore"]
+world-manager-plugin: "MultiWorld"
+
+hardcore-world: ["Hardcore"]
+auto-load-hardcore-world: true
+
+hardcore-flight: false
+hardcore-pvp: false
+hardcore-fall-damage: true
+
+other-keep-inventory: true
+other-keep-inventory-worlds: ["Lobby", "World"]
+
+restriced-blocks-break: true
+restriced-blocks-place: false
+restricted-blocks: ["TNT", "DIAMOND_BLOCK"]
 
 # =========================
 #     GAME OVER CONFIG
 # =========================
 
-game-over-form-title: "Test"
-game-over-form-content: "Test"
-game-over-form-exit-button: "Test"
+game-over-form-title: "§l§8GAME OVER"
+game-over-form-content: "§eOops! You died and lost the game! You get xp and more rewards for playing, try again later!"
+game-over-form-exit-button: "§cExit"
+game-over-form-exit-button-sound: "random.levelup"
+game-over-form-exit-button-texture: "textures/ui/cancel"
+
+# =========================
+#     ON DEATH CONFIG
+# =========================
+
+death-sound: true
+death-sound-name: "random.explode1"
+
+death-add-xp-level: false
+death-xp-value: 4
+
+death-add-money: true
+death-money-value: 1
+
+# =========================
+#     HARDCORE TP FORM
+# =========================
+
+tp-game-form-title: "§l§8HARCORE"
+tp-game-form-content: "§eClick to enter the hardcore world! If it's your first time, welcome, if not, welcome back!"
+tp-game-form-start-button: "§aJoin"
+tp-game-form-exit-button: "§cExit"
+tp-game-form-button-tp-texture: "textures/ui/world"
+tp-game-form-button-exit-texture: "textures/ui/cancel"
+join-game-message: "§aYou have entered hardcore mode! Do not die"
 ...

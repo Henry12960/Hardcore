@@ -8,4 +8,5 @@ projects:
     icon: "Hardcore.png"
     libs:
       - src: https://poggit.pmmp.io/ci/Vecnavium/FormsUI/FormsUI
+      - src: https://poggit.pmmp.io/ci/David-pm-pl/libEco/libEco
 ...

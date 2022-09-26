@@ -16,6 +16,8 @@ use pocketmine\utils\Config;
 
 use HenryDM\Hardcore\Events\DeathEvent;
 use HenryDM\Hardcore\Events\RespawnEvent;
+use HenryDM\Hardcore\Events\HardcoreConfig;
+use HenryDM\Hardcore\commands\HardcoreCommand;
 
 class Main extends PluginBase implements Listener {  
     
@@ -28,13 +30,22 @@ class Main extends PluginBase implements Listener {
     public function onEnable() : void {
         $this->saveResource("config.yml");
         $this->cfg = $this->getConfig(); 
+        $this->LoadWorlds();
 
         $events = [
             DeathEvent::class,
-            RespawnEvent::class
+            RespawnEvent::class,
+            HardcoreConfig::class,
+            HardcoreCommand::class
         ];
         foreach($events as $ev) {
             $this->getServer()->getPluginManager()->registerEvents(new $ev($this), $this);
+        }
+    }
+
+    private function LoadWorlds() : void {
+        if($this->getConfig()->get("auto-load-hardcore-world") === true) {
+            $this->getServer()->loadLevel($this->getConfig()->get("hardcore-world"));
         }
     }
 
