@@ -5,6 +5,7 @@ namespace HenryDM\Hardcore\Events;
 use HenryDM\Hardcore\Main;
 use pocketmine\event\Listener;
 
+use pocketmine\Server;
 use pocketmine\event\player\PlayerRespawnEvent;
 use Vecnavium\FormsUI\SimpleForm;
 
@@ -20,10 +21,6 @@ class RespawnEvent implements Listener {
         $player = $event->getPlayer();        
         $world = $player->getWorld();
         $worldName = $world->getFolderName();
-        $title = $this->getMain()->cfg->get("game-over-form-title");
-        $content = $this->getMain()->cfg->get("game-over-form-content");
-        $exitbutton = $this->getMain()->cfg->get("game-over-form-exit-button");
-        $image = $this->getMain()->cfg->get("game-over-form-exit-button-image");
 # ===============================================
 
         if (in_array($worldName, $this->getMain()->cfg->get("hardcore-worlds", []))) {
@@ -34,14 +31,14 @@ class RespawnEvent implements Listener {
         
                 switch($data) {
                     case 0:
-                        $this->getServer()->dispatchCommand($player, "");
+                        $this->getServer()->dispatchCommand($player, "test");
                     break;
                     }
         
                 });
-                $form->setTitle($title);
-                $form->setContent($content, 0, );
-                $form->addButton($exitbutton, 0, $image);
+                $form->setTitle($this->getMain()->cfg->get("game-over-form-title");
+                $form->setContent($this->getMain()->cfg->get("game-over-form-content");
+                $form->addButton($this->getMain()->cfg->get("game-over-form-exit-button"), 0, $this->getMain()->cfg->get("game-over-form-exit-button-image");
                 $form->sendToPlayer($player);
                 return $form;
             }
