@@ -5,3 +5,5 @@ version: 1.0.0
 author: [HenryDM]
 description: An advanced plugin to create a custom hardcore mode on your pocketmine server!
 website: https://github.com/Henry12960
+
+softdepend: [MultiWorld, Worlds, EconomyAPI, BedrockEconomy]
