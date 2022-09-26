@@ -20,7 +20,7 @@ class HardcoreConfig implements Listener {
     }
 
     public function onWorldChange(EntityTeleportEvent $event)  {
-        $player = $event->getPlayer();
+        $player = $event->getEntity();
         if($this->getMain()->cfg->get("hardcore-world-flight") === false) {
             $player->setAllowFlight(false);
             $player->setFlying(false);
@@ -28,6 +28,7 @@ class HardcoreConfig implements Listener {
     }
 
     public function onDamage(EntityDamageEvent $event)  {
+        $entity = $event->getEntity();
         $world = $entity->getWorld();
         $worldName = $world->getFolderName();
         $entity = $event->getEntity();

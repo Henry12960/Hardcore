@@ -45,7 +45,7 @@ class Main extends PluginBase implements Listener {
 
     private function LoadWorlds() : void {
         if($this->getConfig()->get("auto-load-hardcore-world") === true) {
-            $this->getServer()->loadWorld($this->getConfig()->get("hardcore-world"));
+            $this->getServer()->getWorldManager()->loadWorld($this->getConfig()->get("hardcore-world"));
         }
     }
 
