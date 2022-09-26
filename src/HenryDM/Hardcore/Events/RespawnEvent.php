@@ -8,7 +8,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerRespawnEvent;
 use HenryDM\Hardcore\libs\jojoe77777\FormAPI\SimpleForm;
 
-class DeathEvent implements Listener {
+class RespawnEvent implements Listener {
 
     public function __construct(private Main $main) {
         $this->main = $main;
