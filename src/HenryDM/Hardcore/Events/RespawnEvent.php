@@ -38,7 +38,7 @@ class RespawnEvent implements Listener {
                 });
                 $form->setTitle($this->getMain()->cfg->get("game-over-form-title");
                 $form->setContent($this->getMain()->cfg->get("game-over-form-content");
-                $form->addButton($this->getMain()->cfg->get("game-over-form-exit-button"), 0, $this->getMain()->cfg->get("game-over-form-exit-button-image");
+                $form->addButton($this->getMain()->cfg->get("game-over-form-exit-button");
                 $form->sendToPlayer($player);
                 return $form;
             }
