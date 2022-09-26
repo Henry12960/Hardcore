@@ -63,8 +63,8 @@ class HardcoreCommand implements Listener {
             });
             $form->setTitle($this->getMain()->cfg->get("start-game-form-title"));
             $form->setContent($this->getMain()->cfg->get("start-game-form-content"));
-            $form->addButton($this->getMain()->cfg->get("tp-game-form-button-tp"), 0, $this->getMain()->cfg->get("tp-game-form-button-tp-texture");
-            $form->addButton($this->getMain()->cfg->get("tp-game-form-button-exit"), 0, $this->getMain()->cfg->get("tp-game-form-button-exit-texture");
+            $form->addButton($this->getMain()->cfg->get("tp-game-form-button-tp"), 0, $this->getMain()->cfg->get("tp-game-form-button-tp-texture"));
+            $form->addButton($this->getMain()->cfg->get("tp-game-form-button-exit"), 0, $this->getMain()->cfg->get("tp-game-form-button-exit-texture"));
     }
 
     public function openHardcoreWL($player) {
@@ -89,8 +89,8 @@ class HardcoreCommand implements Listener {
             });
             $form->setTitle($this->getMain()->cfg->get("start-game-form-title"));
             $form->setContent($this->getMain()->cfg->get("start-game-form-content"));
-            $form->addButton($this->getMain()->cfg->get("tp-game-form-button-tp"), 0, $this->getMain()->cfg->get("tp-game-form-button-tp-texture");
-            $form->addButton($this->getMain()->cfg->get("tp-game-form-button-exit"), 0, $this->getMain()->cfg->get("tp-game-form-button-exit-texture");
+            $form->addButton($this->getMain()->cfg->get("tp-game-form-button-tp"), 0, $this->getMain()->cfg->get("tp-game-form-button-tp-texture"));
+            $form->addButton($this->getMain()->cfg->get("tp-game-form-button-exit"), 0, $this->getMain()->cfg->get("tp-game-form-button-exit-texture"));
     }
 
     public function getMain() : Main {
