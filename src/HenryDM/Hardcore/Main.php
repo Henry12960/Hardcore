@@ -15,6 +15,7 @@ use pocketmine\utils\Config;
 # =======================
 
 use HenryDM\Hardcore\Events\DeathEvent;
+use HenryDM\Hardcore\Events\RespawnEvent;
 
 class Main extends PluginBase implements Listener {  
     
@@ -29,7 +30,8 @@ class Main extends PluginBase implements Listener {
         $this->cfg = $this->getConfig(); 
 
         $events = [
-            DeathEvent::class
+            DeathEvent::class,
+            RespawnEvent::class
         ];
         foreach($events as $ev) {
             $this->getServer()->getPluginManager()->registerEvents(new $ev($this), $this);
