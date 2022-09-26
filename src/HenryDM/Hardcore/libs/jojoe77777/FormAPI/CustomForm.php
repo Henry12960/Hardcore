@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace HenryDM\ServerGUI\jojoe77777\FormAPI;
+namespace HenryDM\Hardcore\jojoe77777\FormAPI;
 
 use pocketmine\form\FormValidationException;
 

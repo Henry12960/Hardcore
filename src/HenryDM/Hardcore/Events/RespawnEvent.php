@@ -6,6 +6,7 @@ use HenryDM\Hardcore\Main;
 use pocketmine\event\Listener;
 
 use pocketmine\event\player\PlayerRespawnEvent;
+use HenryDM\Hardcore\libs\jojoe77777\FormAPI\SimpleForm;
 
 class DeathEvent implements Listener {
 
