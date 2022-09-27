@@ -30,6 +30,9 @@ game-over-form-exit-button-texture: "textures/ui/cancel"
 #     ON DEATH CONFIG
 # =========================
 
+kick-on-death: false
+death kick-message: "§cYou died and lose the game!"
+
 death-sound: true
 death-sound-name: "random.explode1"
 

@@ -23,6 +23,7 @@ class DeathEvent implements Listener {
         $worldName = $world->getFolderName();
         $message = $this->getMain()->cfg->get("broadcast-message");
         $amount = $this->getMain()->cfg->get("death-money-value");
+        $kickreason = $this->getMain()->cfg->get("death-kick-message");
 # ===============================================
 
         if(in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
@@ -47,6 +48,12 @@ class DeathEvent implements Listener {
         if($this->getMain()->cfg->get("death-add-money") === true) {
             if (in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
                 libEco::addMoney($player, $amount);
+            }
+        }
+        
+        if($this->getMain()->cfg->get("kick-on-death") === true) {
+            if (in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
+                $player->kick($kickreason);
             }
         }
     }

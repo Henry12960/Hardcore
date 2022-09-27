@@ -40,7 +40,7 @@
 
  - Death Category:
 
-   > ➜ In this category you can config on player death events as `sound` `add xp` and `add money`, add money feature support [BedrockEconomy](https://poggit.pmmp.io/p/BedrockEconomy) and [EconomyAPI](https://poggit.pmmp.io/p/EconomyAPI/5.7.3-PM4) as provider.
+   > ➜ In this category you can config on player death events as `sound` `add xp` and `add money`, you too can add config to `kick` player after die on hardcore mode, add money feature support [BedrockEconomy](https://poggit.pmmp.io/p/BedrockEconomy) and [EconomyAPI](https://poggit.pmmp.io/p/EconomyAPI/5.7.3-PM4) as provider.
 
  - Teleport Category:
 
