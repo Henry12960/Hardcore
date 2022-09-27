@@ -30,6 +30,7 @@ class Main extends PluginBase implements Listener {
     public function onEnable() : void {
         $this->saveResource("config.yml");
         $this->cfg = $this->getConfig(); 
+        $this->loadCommand();
 
         $events = [
             DeathEvent::class,
@@ -44,6 +45,10 @@ class Main extends PluginBase implements Listener {
 
     public function onLoad() : void {
         self::$instance = $this;
+    }
+
+    public function loadCommand() {
+        $this->getServer()->getCommandMap()->register("hardcore", new HardcoreCommand($this, "hardcore", "Enter on Hardcore Game Mode", ["hc", "hardc"]));
     }
 
     public function getInstance() : Main {
