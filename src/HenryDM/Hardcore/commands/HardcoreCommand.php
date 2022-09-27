@@ -18,7 +18,7 @@ class HardcoreCommand implements Listener {
         $this->main = $main;
     }
     
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool{
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): void {
 
         if($command->getName() == "hardcore") {
             if($sender instanceof Player){
@@ -40,7 +40,7 @@ class HardcoreCommand implements Listener {
                 case 0:
                     $world = $this->getMain()->cfg->get("hardcore-world", []);
                     $message = $this->getMain()->cfg->get("join-game-message");
-                    $player->teleport($this->getServer()->getWorldByName($world)->getSafeSpawn()); 
+                    $player->teleport($this->main->getServer()->getWorldByName($world)->getSafeSpawn()); 
                     $player->sendMessage($message);
                 break;
 
