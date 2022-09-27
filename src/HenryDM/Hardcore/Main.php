@@ -57,7 +57,7 @@ class Main extends PluginBase implements Listener {
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
         switch ($command->getName()) {
 
-            case "harcore":
+            case "hardcore":
                 if ($sender instanceof Player) {
                     if ($sender->hasPermission("hardcore.use")) {
                         $this->openHardcoreUI($sender);
