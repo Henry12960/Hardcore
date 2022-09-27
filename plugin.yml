@@ -8,11 +8,6 @@ website: https://github.com/Henry12960
 
 softdepend: [EconomyAPI, BedrockEconomy]
 
-commands: 
-  hardcore:
-    description: "Join in hardcore gamemode"
-    permission: hardcore.use
-
 permissions:
   hardcore.use:
     default: true
