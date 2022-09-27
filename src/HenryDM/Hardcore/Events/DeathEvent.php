@@ -28,8 +28,9 @@ class DeathEvent implements Listener {
 
         if(in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
             $event->setDrops([]);
-            if($this->getMain()->cfg->get("hardcore-death-broadcast") === true
+            if($this->getMain()->cfg->get("hardcore-death-broadcast") === true) {
                $this->server->broadcastMessage($message);
+            }
         }
 
         if($this->getMain()->cfg->get("death-sound") === true) {
