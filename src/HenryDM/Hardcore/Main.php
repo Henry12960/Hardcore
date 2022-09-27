@@ -54,7 +54,7 @@ class Main extends PluginBase implements Listener {
         self::$instance = $this;
     }
 
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) {
 
         if($command->getName() == "hardcore") {
             if($sender instanceof Player){
