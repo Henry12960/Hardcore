@@ -59,16 +59,10 @@ class Main extends PluginBase implements Listener {
 
             case "hardcore":
                 if ($sender instanceof Player) {
-                    if ($sender->hasPermission("hardcore.use")) {
-                        $this->openHardcoreUI($sender);
-                        break;
-                    } else {
-                        $sender->sendMessage("You don't have permission to use this!");
-                        break;
-                    }
+                    $this->openHardcoreUI($sender);
                 } else {
                     $sender->sendMessage("Use this command in game!");
-                    break;
+                break;
                 }
         }
         return true;
