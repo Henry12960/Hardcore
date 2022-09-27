@@ -26,8 +26,8 @@ class HardcoreCommand extends Command implements Listener {
             } else {
                 $sender->sendMessage("Use this command in game!");
             }
-        }
-    }
+            return true;
+        } 
 
     public function openHardcoreUI($player) {
         $form = new SimpleForm(function(Player $player, int $data = null){
