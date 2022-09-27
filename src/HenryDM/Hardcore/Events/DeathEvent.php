@@ -13,7 +13,6 @@ class DeathEvent implements Listener {
 
     public function __construct(private Main $main) {
         $this->main = $main;
-        $this->server = $this->getServer();
     }
 
     public function onDeath(PlayerDeathEvent $event) {
@@ -29,7 +28,7 @@ class DeathEvent implements Listener {
         if(in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
             $event->setDrops([]);
             if($this->getMain()->cfg->get("hardcore-death-broadcast") === true) {
-               $this->server->broadcastMessage($message);
+               $this->main->getServer()->broadcastMessage($message);
             }
         }
 
