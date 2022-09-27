@@ -40,7 +40,7 @@ class HardcoreCommand implements Listener {
                 case 0:
                     $world = $this->getMain()->cfg->get("hardcore-world", []);
                     $message = $this->getMain()->cfg->get("join-game-message");
-                    $player->teleport($this->main->getServer()->getWorldByName($world)->getSafeSpawn()); 
+                    $player->teleport($this->main->getServer()->getWorldManager()->getWorldByName($world)->getSafeSpawn()); 
                     $player->sendMessage($message);
                 break;
 
