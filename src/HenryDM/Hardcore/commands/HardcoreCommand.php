@@ -5,12 +5,9 @@ namespace HenryDM\Hardcore\commands;
 use HenryDM\Hardcore\Main;
 use pocketmine\event\Listener;
 
-use pocketmine\Server;
 use pocketmine\player\Player;
-
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\console\ConsoleCommandSender;
 
 use HenryDM\Hardcore\utils\PluginUtils;
 use Vecnavium\FormsUI\SimpleForm;
@@ -23,29 +20,17 @@ class HardcoreCommand implements Listener {
     
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
 
-        if($this->getMain()->cfg->get("world-manager-plugin") === "MultiWorld") {
             if($command->getName() == "hardcore") {
                 if($sender instanceof Player){
-                    $this->openHardcoreMW($sender);
+                    $this->openHardcoreUI($sender);
                 } else {
                     $sender->sendMessage("Use this command in game!");
                 }
             }
         }
-
-        if($this->getMain()->cfg->get("world-manager-plugin") === "Worlds") {
-            if($command->getName() == "hardcore") {
-                if($sender instanceof Player){
-                    $this->openHardcoreWL($sender);
-                } else {
-                    $sender->sendMessage("Use this command in game!");
-                }
-            }
-        }
-        return true;
     }
 
-    public function openHardcoreMW($player) {
+    public function openHardcoreUI($player) {
         $form = new SimpleForm(function(Player $player, int $data = null){
             if($data === null) {
                 return true;
@@ -53,37 +38,9 @@ class HardcoreCommand implements Listener {
     
             switch($data) {
                 case 0:
-                    $player = $event->getPlayer();
                     $world = $this->getMain()->cfg->get("hardcore-world", []);
-                    $message = $this->getMain()->cfg->get("join-game-message"); 
-                    $this->getServer()->getCommandMap()->dispatch(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), "mw tp" . $world . $player);
-                    $player->sendMessage($message);
-                break;
-
-                case 1: 
-                    PluginUtils::playSound($player, $this->getMain()->cfg->get("start-game-button-click-sound"), 1, 1);
-                break;
-                }
-    
-            });
-            $form->setTitle($this->getMain()->cfg->get("start-game-form-title"));
-            $form->setContent($this->getMain()->cfg->get("start-game-form-content"));
-            $form->addButton($this->getMain()->cfg->get("tp-game-form-button-tp"), 0, $this->getMain()->cfg->get("tp-game-form-button-tp-texture"));
-            $form->addButton($this->getMain()->cfg->get("tp-game-form-button-exit"), 0, $this->getMain()->cfg->get("tp-game-form-button-exit-texture"));
-    }
-
-    public function openHardcoreWL($player) {
-        $form = new SimpleForm(function(Player $player, int $data = null){
-            if($data === null) {
-                return true;
-            }
-    
-            switch($data) {
-                case 0:
-                    $player = $event->getPlayer();
-                    $world = $this->getMain()->cfg->get("hardcore-world", []);
-                    $message = $this->getMain()->cfg->get("join-game-message"); 
-                    $this->getServer()->getCommandMap()->dispatch(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), "worlds teleport" . $sender . $world);
+                    $message = $this->getMain()->cfg->get("join-game-message");
+                    $player->teleport($this->getServer()->getWorldByName($world)->getSafeSpawn()); 
                     $player->sendMessage($message);
                 break;
 
