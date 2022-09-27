@@ -19,6 +19,13 @@ use HenryDM\Hardcore\Events\RespawnEvent;
 use HenryDM\Hardcore\Events\HardcoreConfig;
 use HenryDM\Hardcore\commands\HardcoreCommand;
 
+# =======================
+#     Command Class
+# =======================
+
+use HenryDM\Hardcore\utils\PluginUtils;
+use Vecnavium\FormsUI\SimpleForm;
+
 class Main extends PluginBase implements Listener {  
     
     /*** @var Main|null */
@@ -47,8 +54,46 @@ class Main extends PluginBase implements Listener {
         self::$instance = $this;
     }
 
-    public function loadCommand() {
-        $this->getServer()->getCommandMap()->register("hardcore", new HardcoreCommand("Join on Hardcore gamemode"));
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
+
+        if($command->getName() == "hardcore") {
+            if($sender instanceof Player){
+                $this->openHardcoreUI($sender);
+            } else {
+                $sender->sendMessage("Use this command in game!");
+            }
+            return true;
+        } 
+    }
+
+    public function openHardcoreUI($player) {
+        $form = new SimpleForm(function(Player $player, int $data = null){
+            if($data === null) {
+                return true;
+            }
+    
+            switch($data) {
+                case 0:
+                    $world = $this->getConfig()->get("hardcore-world", []);
+                    $message = $this->getConfig()->get("join-game-message");
+                    $player->teleport($this->getServer()->getWorldManager()->getWorldByName($world)->getSafeSpawn()); 
+                    $player->sendMessage($message);
+                break;
+
+                case 1: 
+                    PluginUtils::playSound($player, $this->getConfig()->get("start-game-button-click-sound"), 1, 1);
+                break;
+                }
+    
+            });
+            $form->setTitle($this->getConfig()->get("start-game-form-title"));
+            $form->setContent($this->getConfig()->get("start-game-form-content"));
+            $form->addButton($this->getConfig()->get("tp-game-form-button-tp"), 0, $this->getConfig()->get("tp-game-form-button-tp-texture"));
+            $form->addButton($this->getConfig()->get("tp-game-form-button-exit"), 0, $this->getConfig()->get("tp-game-form-button-exit-texture"));
+    }
+
+    public function getMain() : Main {
+        return $this->main;
     }
 
     public function getInstance() : Main {
