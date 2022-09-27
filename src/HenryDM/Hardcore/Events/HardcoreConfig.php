@@ -44,7 +44,7 @@ class HardcoreConfig implements Listener {
         }
 
         if($this->getMain()->cfg->get("hardcore-fall-damage") === true) {
-            if($event->getCause() === EntityDamageByEntityEvent::CAUSE_FALL) {
+            if($event->getCause() === EntityDamageEvent::CAUSE_FALL) {
                 $event->cancel();
             }  
         }
@@ -62,7 +62,6 @@ class HardcoreConfig implements Listener {
     }
 
     public function onBreak(BlockBreakEvent $event) {
-        $player = $event->getPlayer();
         $world = $player->getWorld();
         $worldName = $world->getFolderName();
         $block = $event->getBlock()->getName();
@@ -74,7 +73,6 @@ class HardcoreConfig implements Listener {
     }
 
     public function onPlace(BlockPlaceEvent $event) {
-        $player = $event->getPlayer();
         $world = $player->getWorld();
         $worldName = $world->getFolderName();
         $block = $event->getBlock()->getName();

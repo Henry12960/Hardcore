@@ -46,8 +46,6 @@ class HardcoreCommand implements Listener {
     }
 
     public function openHardcoreMW($player) {
-        $message = $this->getMain()->cfg->get("join-game-message"); 
-        $world = $this->getMain()->cfg->get("hardcore-world", []);
         $form = new SimpleForm(function(Player $player, int $data = null){
             if($data === null) {
                 return true;
@@ -55,7 +53,10 @@ class HardcoreCommand implements Listener {
     
             switch($data) {
                 case 0:
-                    $this->getServer()->getCommandMap()->dispatch(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), "mw tp" . $world . $sender);
+                    $player = $event->getPlayer();
+                    $world = $this->getMain()->cfg->get("hardcore-world", []);
+                    $message = $this->getMain()->cfg->get("join-game-message"); 
+                    $this->getServer()->getCommandMap()->dispatch(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), "mw tp" . $world . $player);
                     $player->sendMessage($message);
                 break;
 
@@ -72,8 +73,6 @@ class HardcoreCommand implements Listener {
     }
 
     public function openHardcoreWL($player) {
-        $message = $this->getMain()->cfg->get("join-game-message");
-        $world = $this->getMain()->cfg->get("hardcore-world", []);
         $form = new SimpleForm(function(Player $player, int $data = null){
             if($data === null) {
                 return true;
@@ -81,6 +80,9 @@ class HardcoreCommand implements Listener {
     
             switch($data) {
                 case 0:
+                    $player = $event->getPlayer();
+                    $world = $this->getMain()->cfg->get("hardcore-world", []);
+                    $message = $this->getMain()->cfg->get("join-game-message"); 
                     $this->getServer()->getCommandMap()->dispatch(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), "worlds teleport" . $sender . $world);
                     $player->sendMessage($message);
                 break;
