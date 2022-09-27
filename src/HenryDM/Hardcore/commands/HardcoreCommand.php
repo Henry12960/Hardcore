@@ -18,7 +18,7 @@ class HardcoreCommand implements Listener {
         $this->main = $main;
     }
     
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): void {
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) {
 
         if($command->getName() == "hardcore") {
             if($sender instanceof Player){
