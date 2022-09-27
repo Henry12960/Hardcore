@@ -48,7 +48,7 @@ class Main extends PluginBase implements Listener {
     }
 
     public function loadCommand() {
-        $this->getServer()->getCommandMap()->register("Hardcore", new HardcoreCommand("hardcore", "Join on Hardcore gamemode"));
+        $this->getServer()->getCommandMap()->register("hardcore", new HardcoreCommand("Join on Hardcore gamemode"));
     }
 
     public function getInstance() : Main {
