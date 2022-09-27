@@ -28,6 +28,7 @@ class HardcoreCommand extends Command implements Listener {
             }
             return true;
         } 
+    }
 
     public function openHardcoreUI($player) {
         $form = new SimpleForm(function(Player $player, int $data = null){
