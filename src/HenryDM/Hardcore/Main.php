@@ -17,7 +17,6 @@ use pocketmine\utils\Config;
 use HenryDM\Hardcore\Events\DeathEvent;
 use HenryDM\Hardcore\Events\RespawnEvent;
 use HenryDM\Hardcore\Events\HardcoreConfig;
-use HenryDM\Hardcore\commands\HardcoreCommand;
 
 # =======================
 #     Command Class
@@ -39,14 +38,12 @@ class Main extends PluginBase implements Listener {
 
     public function onEnable() : void {
         $this->saveResource("config.yml");
-        $this->cfg = $this->getConfig(); 
-        $this->loadCommand();
+        $this->cfg = $this->getConfig();
 
         $events = [
             DeathEvent::class,
             RespawnEvent::class,
-            HardcoreConfig::class,
-            HardcoreCommand::class
+            HardcoreConfig::class
         ];
         foreach($events as $ev) {
             $this->getServer()->getPluginManager()->registerEvents(new $ev($this), $this);
@@ -93,10 +90,6 @@ class Main extends PluginBase implements Listener {
             $form->setContent($this->getConfig()->get("start-game-form-content"));
             $form->addButton($this->getConfig()->get("tp-game-form-button-tp"), 0, $this->getConfig()->get("tp-game-form-button-tp-texture"));
             $form->addButton($this->getConfig()->get("tp-game-form-button-exit"), 0, $this->getConfig()->get("tp-game-form-button-exit-texture"));
-    }
-
-    public function getMain() : Main {
-        return $this->main;
     }
 
     public function getInstance() : Main {
