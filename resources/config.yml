@@ -4,7 +4,6 @@
 # =========================
 
 hardcore-world: ["Hardcore"]
-auto-load-hardcore-world: true
 
 hardcore-flight: false
 hardcore-pvp: false

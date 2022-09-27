@@ -30,7 +30,6 @@ class Main extends PluginBase implements Listener {
     public function onEnable() : void {
         $this->saveResource("config.yml");
         $this->cfg = $this->getConfig(); 
-        $this->LoadWorlds();
 
         $events = [
             DeathEvent::class,
@@ -40,12 +39,6 @@ class Main extends PluginBase implements Listener {
         ];
         foreach($events as $ev) {
             $this->getServer()->getPluginManager()->registerEvents(new $ev($this), $this);
-        }
-    }
-
-    private function LoadWorlds() : void {
-        if($this->getConfig()->get("auto-load-hardcore-world") === true) {
-            $this->getServer()->getWorldManager()->loadWorld($this->getConfig()->get("hardcore-world"));
         }
     }
 
