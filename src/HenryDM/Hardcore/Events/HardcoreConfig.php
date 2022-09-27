@@ -62,6 +62,7 @@ class HardcoreConfig implements Listener {
     }
 
     public function onBreak(BlockBreakEvent $event) {
+        $player = $event->getPlayer();
         $world = $player->getWorld();
         $worldName = $world->getFolderName();
         $block = $event->getBlock()->getName();
@@ -73,6 +74,7 @@ class HardcoreConfig implements Listener {
     }
 
     public function onPlace(BlockPlaceEvent $event) {
+        $player = $event->getPlayer();
         $world = $player->getWorld();
         $worldName = $world->getFolderName();
         $block = $event->getBlock()->getName();

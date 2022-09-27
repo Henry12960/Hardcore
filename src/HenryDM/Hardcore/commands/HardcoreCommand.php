@@ -12,7 +12,7 @@ use pocketmine\command\CommandSender;
 use HenryDM\Hardcore\utils\PluginUtils;
 use Vecnavium\FormsUI\SimpleForm;
 
-class HardcoreCommand implements Listener {
+class HardcoreCommand extends Command implements Listener {
 
     public function __construct(private Main $main) {
         $this->main = $main;
