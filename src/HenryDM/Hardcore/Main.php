@@ -10,10 +10,6 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\utils\Config;
 
-use pocketmine\player\Player;
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
-
 # =======================
 #      Plugin Class
 # =======================
@@ -21,6 +17,7 @@ use pocketmine\command\CommandSender;
 use HenryDM\Hardcore\Events\DeathEvent;
 use HenryDM\Hardcore\Events\RespawnEvent;
 use HenryDM\Hardcore\Events\HardcoreConfig;
+use HenryDM\Hardcore\commands\HardcoreCommand;
 
 class Main extends PluginBase implements Listener {  
     
@@ -37,49 +34,12 @@ class Main extends PluginBase implements Listener {
         $events = [
             DeathEvent::class,
             RespawnEvent::class,
-            HardcoreConfig::class
+            HardcoreConfig::class,
+            HardcoreCommand::class
         ];
         foreach($events as $ev) {
             $this->getServer()->getPluginManager()->registerEvents(new $ev($this), $this);
         }
-    }
-
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool{
-
-        if($command->getName() == "hardcore") {
-            if($sender instanceof Player){
-                $this->openHardcoreUI($sender);
-            } else {
-                $sender->sendMessage("Use this command in game!");
-            }
-            return true;
-        } 
-    }
-
-    public function openHardcoreUI($player) {
-        $form = new SimpleForm(function(Player $player, int $data = null){
-            if($data === null) {
-                return true;
-            }
-    
-            switch($data) {
-                case 0:
-                    $world = $this->getMain()->cfg->get("hardcore-world", []);
-                    $message = $this->getMain()->cfg->get("join-game-message");
-                    $player->teleport($this->getServer()->getWorldByName($world)->getSafeSpawn()); 
-                    $player->sendMessage($message);
-                break;
-
-                case 1: 
-                    PluginUtils::playSound($player, $this->getMain()->cfg->get("start-game-button-click-sound"), 1, 1);
-                break;
-                }
-    
-            });
-            $form->setTitle($this->getMain()->cfg->get("start-game-form-title"));
-            $form->setContent($this->getMain()->cfg->get("start-game-form-content"));
-            $form->addButton($this->getMain()->cfg->get("tp-game-form-button-tp"), 0, $this->getMain()->cfg->get("tp-game-form-button-tp-texture"));
-            $form->addButton($this->getMain()->cfg->get("tp-game-form-button-exit"), 0, $this->getMain()->cfg->get("tp-game-form-button-exit-texture"));
     }
 
     public function onLoad() : void {
