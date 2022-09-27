@@ -23,6 +23,9 @@ use HenryDM\Hardcore\commands\HardcoreCommand;
 #     Command Class
 # =======================
 
+use pocketmine\player\Player;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
 use HenryDM\Hardcore\utils\PluginUtils;
 use Vecnavium\FormsUI\SimpleForm;
 
