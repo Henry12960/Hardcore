@@ -20,12 +20,11 @@ class HardcoreCommand implements Listener {
     
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
 
-            if($command->getName() == "hardcore") {
-                if($sender instanceof Player){
-                    $this->openHardcoreUI($sender);
-                } else {
-                    $sender->sendMessage("Use this command in game!");
-                }
+        if($command->getName() == "hardcore") {
+            if($sender instanceof Player){
+                $this->openHardcoreUI($sender);
+            } else {
+                $sender->sendMessage("Use this command in game!");
             }
         }
     }
