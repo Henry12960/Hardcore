@@ -4,6 +4,8 @@
 | --- | --- | --- |
 | 1.0.0 | Beta-dev | 27/09/2022 |
 
+---
+
 ## 📫 • General:
 
  - Plugin Introduction: 
@@ -24,6 +26,8 @@
 
    > Avoid putting keep inventory worlds with the `same name` as the Hardcore world, this may cause an internal conflict due to dying in the Hardcore world your inventory will be cleared immediately.
 
+---
+
 ## 🔰 • Features
 
  - General Category:
@@ -42,6 +46,7 @@
 
    > ➜ In this category you can config form `texture` and `text`, too the `join in game` message.
     
+---
 
 ## 📜 • License
 
