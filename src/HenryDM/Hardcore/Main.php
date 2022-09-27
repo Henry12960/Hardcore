@@ -54,16 +54,24 @@ class Main extends PluginBase implements Listener {
         self::$instance = $this;
     }
 
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) {
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
+        switch ($command->getName()) {
 
-        if($command->getName() == "hardcore") {
-            if($sender instanceof Player){
-                $this->openHardcoreUI($sender);
-            } else {
-                $sender->sendMessage("Use this command in game!");
-            }
-            return true;
-        } 
+            case "harcore":
+                if ($sender instanceof Player) {
+                    if ($sender->hasPermission("hardcore.use")) {
+                        $this->openHardcoreUI($sender);
+                        break;
+                    } else {
+                        $sender->sendMessage("You don't have permission to use this!");
+                        break;
+                    }
+                } else {
+                    $sender->sendMessage("Use this command in game!");
+                    break;
+                }
+        }
+        return true;
     }
 
     public function openHardcoreUI($player) {
