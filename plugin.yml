@@ -16,4 +16,4 @@ commands:
 
 permissions:
   hardcore.use:
-    default: true  
+    default: true

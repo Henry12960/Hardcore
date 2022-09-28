@@ -1,40 +1,53 @@
 ---
 # =========================
+#        HARDCORE
+# =========================
+# 1. Advanced plugin to add a harcore mode to your server
+# 3. You find a problem? Open a issue: https://github.com/Henry12960/Hardcore/issues/new
+# 4. Star project for more: https://github.com/Henry12960/Hardcore
+# 8. Made by Henry Thierry [HenryDM]
+
+# =========================
 #      GENERAL CONFIG
 # =========================
+# 1º Only set one hardcore world!
+# 2º You can use {line} and {player} tags in "broadcast-message".
+# 3º If you want multiworld, you need set tp permission to player! I suggest warps plugin as BetterWarps! to "tp-game-command"
 
 hardcore-world: ["Hardcore"]
+tp-game-command: "mw tp Hardcore"
 
 hardcore-flight: false
 hardcore-pvp: false
 hardcore-fall-damage: true
 
+hardcore-death-broadcast: false
+broadcast-message: "§c{player} losed the hardcore gamemode!"
+
 other-keep-inventory: true
 other-keep-inventory-worlds: ["Lobby", "World"]
-
-restriced-blocks-break: true
-restriced-blocks-place: false
-restricted-blocks: ["TNT", "DIAMOND_BLOCK"]
 
 # =========================
 #     GAME OVER CONFIG
 # =========================
+# 1º Use \n to add a line!
+# 2º You can use minecraft color codes!
 
 game-over-form-title: "§l§8GAME OVER"
-game-over-form-content: "§eOops! You died and lost the game! You get xp and more rewards for playing, try again later!"
+game-over-form-content: "§eOops! You died and lost the game! You get xp and more rewards for playing, try again later!\n§dBy HenryDM"
 game-over-form-exit-button: "§cExit"
 game-over-form-exit-button-sound: "random.levelup"
-game-over-form-exit-button-texture: "textures/ui/cancel"
 
 # =========================
 #     ON DEATH CONFIG
 # =========================
+# 1º Use "death-money-value" with moderation!
 
 kick-on-death: false
 death-kick-message: "§cYou died and lose the game!"
 
 death-sound: true
-death-sound-name: "random.explode1"
+death-sound-name: "random.explode"
 
 death-add-xp-level: false
 death-xp-value: 4
@@ -45,12 +58,13 @@ death-money-value: 1
 # =========================
 #     HARDCORE TP FORM
 # =========================
+# 1º Use \n to add a line!
+# 2º You can use minecraft color codes!
 
-tp-game-form-title: "§l§8HARCORE"
-tp-game-form-content: "§eClick to enter the hardcore world! If it's your first time, welcome, if not, welcome back!"
-tp-game-form-start-button: "§aJoin"
-tp-game-form-exit-button: "§cExit"
-tp-game-form-button-tp-texture: "textures/ui/world"
-tp-game-form-button-exit-texture: "textures/ui/cancel"
-join-game-message: "§aYou have entered hardcore mode! Do not die"
+start-game-form-title: "§l§8HARCORE"
+start-game-form-content: "§eClick to enter the hardcore world! If it's your first time, welcome, if not, welcome back!\n§dBy HenryDM"
+start-game-form-start-button: "§aJoin"
+start-game-form-exit-button: "§cExit"
+start-game-form-button-exit-sound: "random.pop"
+join-game-message: "§d[HARDCORE] §aYou have entered hardcore mode! Do not die"
 ...

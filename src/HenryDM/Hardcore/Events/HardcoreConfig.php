@@ -10,8 +10,6 @@ use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\player\PlayerDeathEvent;
-use pocketmine\event\block\BlockBreakEvent;
-use pocketmine\event\block\BlockPlaceEvent;
 
 class HardcoreConfig implements Listener {
 
@@ -43,7 +41,7 @@ class HardcoreConfig implements Listener {
             }
         }
 
-        if($this->getMain()->cfg->get("hardcore-fall-damage") === true) {
+        if($this->getMain()->cfg->get("hardcore-fall-damage") === false) {
             if($event->getCause() === EntityDamageEvent::CAUSE_FALL) {
                 $event->cancel();
             }  
@@ -57,30 +55,6 @@ class HardcoreConfig implements Listener {
         if($this->getMain()->cfg->get("other-keep-inventory") === true) {
             if(in_array($worldName, $this->getMain()->cfg->getNested("other-keep-inventory-worlds", []))) {
                 $event->setKeepInventory(true);
-            }
-        }
-    }
-
-    public function onBreak(BlockBreakEvent $event) {
-        $player = $event->getPlayer();
-        $world = $player->getWorld();
-        $worldName = $world->getFolderName();
-        $block = $event->getBlock()->getName();
-        if($this->getMain()->cfg->get("restricted-block-break") === true) {
-            if (in_array($block, $this->getMain()->cfg->get("restricted-blocks", []))) {
-                $event->cancel();
-            }
-        }
-    }
-
-    public function onPlace(BlockPlaceEvent $event) {
-        $player = $event->getPlayer();
-        $world = $player->getWorld();
-        $worldName = $world->getFolderName();
-        $block = $event->getBlock()->getName();
-        if($this->getMain()->cfg->get("restricted-block-place") === true) {
-            if (in_array($block, $this->getMain()->cfg->get("restricted-blocks", []))) {
-                $event->cancel();
             }
         }
     }

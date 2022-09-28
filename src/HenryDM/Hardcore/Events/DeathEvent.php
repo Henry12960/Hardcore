@@ -6,6 +6,7 @@ use HenryDM\Hardcore\Main;
 use pocketmine\event\Listener;
 
 use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\event\player\PlayerRespawnEvent;
 use davidglitch04\libEco\libEco;
 use HenryDM\Hardcore\utils\PluginUtils;
 
@@ -19,9 +20,10 @@ class DeathEvent implements Listener {
 
 # ===============================================
         $player = $event->getPlayer();        
+        $name = $player->getName();
         $world = $player->getWorld();
         $worldName = $world->getFolderName();
-        $message = $this->getMain()->cfg->get("broadcast-message");
+        $message = str_replace(["{player}", "{line}"], [$name, "\n"], $this->getMain()->cfg->get("broadcast-message"));
         $amount = $this->getMain()->cfg->get("death-money-value");
         $kickreason = $this->getMain()->cfg->get("death-kick-message");
 # ===============================================
@@ -30,18 +32,6 @@ class DeathEvent implements Listener {
             $event->setDrops([]);
             if($this->getMain()->cfg->get("hardcore-death-broadcast") === true) {
                $this->main->getServer()->broadcastMessage($message);
-            }
-        }
-
-        if($this->getMain()->cfg->get("death-sound") === true) {
-            if(in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
-                PluginUtils::playSound($player, $this->getMain()->cfg->get("death-sound-name"), 1, 1);
-            }
-        }
-
-        if($this->getMain()->cfg->get("death-add-xp-level") === true) {
-            if(in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
-                $player->getXpManager()->addXpLevels($this->getMain()->cfg->get("death-xp-value"));
             }
         }
 
@@ -54,6 +44,27 @@ class DeathEvent implements Listener {
         if($this->getMain()->cfg->get("kick-on-death") === true) {
             if (in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
                 $player->kick($kickreason);
+            }
+        }
+    }
+
+    public function onDeathRespawn(PlayerRespawnEvent $event) {
+
+# ===============================================
+        $player = $event->getPlayer();        
+        $world = $player->getWorld();
+        $worldName = $world->getFolderName();
+# ===============================================
+        
+        if($this->getMain()->cfg->get("death-add-xp-level") === true) {
+            if(in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
+                $player->getXpManager()->addXpLevels($this->getMain()->cfg->get("death-xp-value"));
+            }
+        }
+
+        if($this->getMain()->cfg->get("death-sound") === true) {
+            if(in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
+                PluginUtils::playSound($player, $this->getMain()->cfg->get("death-sound-name"), 1, 1);
             }
         }
     }

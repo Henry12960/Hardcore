@@ -25,7 +25,7 @@ class RespawnEvent implements Listener {
         $worldName = $world->getFolderName();
 # ===============================================
 
-        if (in_array($worldName, $this->getMain()->cfg->get("hardcore-worlds", []))) {
+        if (in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
             $form = new SimpleForm(function(Player $player, int $data = null){
                 if($data === null) {
                     return true;
@@ -33,14 +33,14 @@ class RespawnEvent implements Listener {
         
                 switch($data) {
                     case 0:
-                        PluginUtils::playSound($player, $this->getMain()->cfg->get("game-over-button-click-sound"), 1, 1); 
+                        PluginUtils::playSound($player, $this->getMain()->cfg->get("game-over-form-exit-button-sound"), 1, 1); 
                     break;
                     }
         
                 });
                 $form->setTitle($this->getMain()->cfg->get("game-over-form-title"));
                 $form->setContent($this->getMain()->cfg->get("game-over-form-content"));
-                $form->addButton($this->getMain()->cfg->get("game-over-form-exit-button"), 0, $this->getMain()->cfg->get("game-over-form-exit-button-texture"));
+                $form->addButton($this->getMain()->cfg->get("game-over-form-exit-button"));
                 $form->sendToPlayer($player);
                 return $form;
             }
