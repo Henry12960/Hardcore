@@ -17,7 +17,6 @@ use pocketmine\utils\Config;
 use HenryDM\Hardcore\Events\DeathEvent;
 use HenryDM\Hardcore\Events\RespawnEvent;
 use HenryDM\Hardcore\Events\HardcoreConfig;
-use HenryDM\Hardcore\commands\HardcoreCommand;
 
 # =======================
 #      Command Class
@@ -44,8 +43,7 @@ class Main extends PluginBase implements Listener {
         $events = [
             DeathEvent::class,
             RespawnEvent::class,
-            HardcoreConfig::class,
-            HardcoreCommand::class
+            HardcoreConfig::class
         ];
         foreach($events as $ev) {
             $this->getServer()->getPluginManager()->registerEvents(new $ev($this), $this);
