@@ -1,5 +1,7 @@
 <?php 
 
+namespace HenryDM\Hardcore\commands;
+
 use HenryDM\Hardcore\Main;
 use pocketmine\event\Listener;
 
@@ -38,9 +40,9 @@ class HardcoreCommand implements Listener {
     
             switch($data) {
                 case 0:
-                    $message = $this->getMain()->cfg->get()->cfg->get("join-game-message");
+                    $message = $this->getMain()->cfg->get("join-game-message");
 					$command = $this->getMain()->cfg->get("tp-game-command");
-                    $this->getServer()->dispatchCommand($player, $command);
+                    $this->main->getServer()->dispatchCommand($player, $command);
                     $player->sendMessage($message);
                 break;
 
