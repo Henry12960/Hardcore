@@ -80,22 +80,22 @@ class Main extends PluginBase implements Listener {
     
             switch($data) {
                 case 0:
-                    $message = $this->getConfig()->get("join-game-message");
-					$command = $this->getConfig()->get("tp-game-command");
+                    $message = $this->cfg->get("join-game-message");
+					$command = $this->cfg->get("tp-game-command");
                     $this->getServer()->dispatchCommand($player, $command);
                     $player->sendMessage($message);
                 break;
 
                 case 1: 
-                    PluginUtils::playSound($player, $this->getConfig()->get("start-game-form-button-exit-sound"), 1, 1);
+                    PluginUtils::playSound($player, $this->cfg->get("start-game-form-button-exit-sound"), 1, 1);
                 break;
             }
     
             });
-            $form->setTitle($this->getConfig()->get("start-game-form-title"));
-            $form->setContent($this->getConfig()->get("start-game-form-content"));
-            $form->addButton($this->getConfig()->get("start-game-form-button-tp"));
-            $form->addButton($this->getConfig()->get("start-game-form-button-exit"));
+            $form->setTitle($this->cfg->get("start-game-form-title"));
+            $form->setContent($this->cfg->get("start-game-form-content"));
+            $form->addButton($this->cfg->get("start-game-form-button-tp"));
+            $form->addButton($this->cfg->get("start-game-form-button-exit"));
 			$form->sendToPlayer($player);
             return $form;
     }
