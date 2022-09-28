@@ -34,7 +34,7 @@ other-keep-inventory-worlds: ["Lobby", "World"]
 # 2º You can use minecraft color codes!
 
 game-over-form-title: "§l§8GAME OVER"
-game-over-form-content: "§eOops! You died and lost the game! You get xp and more rewards for playing, try again later!\n§dBy HenryDM"
+game-over-form-content: "§eOops! You died and lost the game! You get xp and more rewards for playing, try again later!\n\n§dBy HenryDM"
 game-over-form-exit-button: "§cExit"
 game-over-form-exit-button-sound: "random.levelup"
 
@@ -61,8 +61,8 @@ death-money-value: 1
 # 1º Use \n to add a line!
 # 2º You can use minecraft color codes!
 
-start-game-form-title: "§l§8HARCORE"
-start-game-form-content: "§eClick to enter the hardcore world! If it's your first time, welcome, if not, welcome back!\n§dBy HenryDM"
+start-game-form-title: "§l§8HARDCORE"
+start-game-form-content: "§eClick to enter the hardcore world! If it's your first time, welcome, if not, welcome back!\n\n§dBy HenryDM"
 start-game-form-start-button: "§aJoin"
 start-game-form-exit-button: "§cExit"
 start-game-form-button-exit-sound: "random.pop"
