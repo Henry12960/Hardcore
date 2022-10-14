@@ -14,7 +14,7 @@ class JoinForm {
 
     public function __construct() {}
 
-    public function openHardcoreUI($player) {
+    public function JoinForm($player) {
         $form = new SimpleForm(function(Player $player, int $data = null){
             if($data === null) {
                 return true;
