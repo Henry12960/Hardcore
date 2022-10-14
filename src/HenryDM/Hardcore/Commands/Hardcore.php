@@ -15,7 +15,7 @@ class Hardcore extends BaseCommand {
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
         if($sender instanceof Player) {
-            Main::getInstance()->joinform->JoinForm();
+            Main::getInstance()->joinform->JoinForm($sender);
         } else {
             $sender->sendMessage("Use this command in-game!");
         }

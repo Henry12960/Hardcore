@@ -55,7 +55,7 @@ class Main extends PluginBase implements Listener {
         self::$instance = $this;
     }
 
-    public function getInstance() : Main {
+    public static function getInstance() : Main {
         return self::$instance;
     }
 
