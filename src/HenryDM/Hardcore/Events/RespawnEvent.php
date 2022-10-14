@@ -25,7 +25,7 @@ class RespawnEvent implements Listener {
         $worldName = $world->getFolderName();
 # ===============================================
 
-        if (in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
+        if(in_array($worldName, $this->getMain()->cfg->get("hardcore-world", []))) {
             $form = new SimpleForm(function(Player $player, int $data = null){
                 if($data === null) {
                     return true;

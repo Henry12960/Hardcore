@@ -17,16 +17,8 @@ use pocketmine\utils\Config;
 use HenryDM\Hardcore\Events\DeathEvent;
 use HenryDM\Hardcore\Events\RespawnEvent;
 use HenryDM\Hardcore\Events\HardcoreConfig;
-
-# =======================
-#      Command Class
-# =======================
-
-use pocketmine\player\Player;
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
-use HenryDM\Hardcore\utils\PluginUtils;
-use Vecnavium\FormsUI\SimpleForm;
+use HenryDM\Hardcore\Comands\Hardcore;
+use HenryDM\Hardcore\Forms\JoinForm;
 
 class Main extends PluginBase implements Listener {  
     
@@ -39,6 +31,7 @@ class Main extends PluginBase implements Listener {
     public function onEnable() : void {
         $this->saveResource("config.yml");
         $this->cfg = $this->getConfig();
+        $this->loadGeneral();
 
         $events = [
             DeathEvent::class,
@@ -50,54 +43,17 @@ class Main extends PluginBase implements Listener {
         }
     }
 
+    public function loadGeneral() : void {
+        $this->getServer()->getCommandMap()->register("hardcore", new Hardcore($this, "hardcore", "Join in a hardcore mode", ["hc"]));    
+		$this->joinform = new JoinForm();
+    }
+
     public function onLoad() : void {
         self::$instance = $this;
     }
 
     public function getInstance() : Main {
         return self::$instance;
-    }
-
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
-        switch ($command->getName()) {
-
-            case "hardcore":
-                if ($sender instanceof Player) {
-                    $this->openHardcoreUI($sender);
-                } else {
-                    $sender->sendMessage("Use this command in game!");
-                break;
-            }
-        }
-        return true;
-    }
-
-    public function openHardcoreUI($player) {
-        $form = new SimpleForm(function(Player $player, int $data = null){
-            if($data === null) {
-                return true;
-            }
-    
-            switch($data) {
-                case 0:
-                    $message = $this->cfg->get("join-game-message");
-		    $command = $this->cfg->get("tp-game-command");
-                    $this->getServer()->dispatchCommand($player, $command);
-                    $player->sendMessage($message);
-                break;
-
-                case 1: 
-                    PluginUtils::playSound($player, $this->cfg->get("start-game-form-button-exit-sound"), 1, 1);
-                break;
-            }
-    
-            });
-            $form->setTitle($this->cfg->get("start-game-form-title"));
-            $form->setContent($this->cfg->get("start-game-form-content"));
-            $form->addButton($this->cfg->get("start-game-form-start-button"));
-            $form->addButton($this->cfg->get("start-game-form-exit-button"));
-	    $form->sendToPlayer($player);
-            return $form;
     }
 
     public function getMainConfig() : Config {
