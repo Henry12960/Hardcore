@@ -17,13 +17,16 @@ use pocketmine\utils\Config;
 use HenryDM\Hardcore\Events\DeathEvent;
 use HenryDM\Hardcore\Events\RespawnEvent;
 use HenryDM\Hardcore\Events\HardcoreConfig;
-use HenryDM\Hardcore\Comands\Hardcore;
+use HenryDM\Hardcore\Commands\Hardcore;
 use HenryDM\Hardcore\Forms\JoinForm;
 
 class Main extends PluginBase implements Listener {  
     
     /*** @var Main|null */
     private static Main|null $instance;
+
+    /*** @var JoinForm[] */
+    public JoinForm $joinfom; 
 
     /*** @var Config */
     public Config $cfg;    

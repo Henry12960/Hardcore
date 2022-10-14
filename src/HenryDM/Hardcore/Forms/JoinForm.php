@@ -3,12 +3,16 @@
 namespace HenryDM\Hardcore\Forms;
 
 use pocketmine\Server;
-use Vecnavium\FormsUI\CustomForm;
+use Vecnavium\FormsUI\SimpleForm;
+
+use HenryDM\Hardcore\Main;
 use pocketmine\player\Player;
 
-use HenryDM\utils\PluginUtils;
+use HenryDM\Hardcore\utils\PluginUtils;
 
 class JoinForm {
+
+    public function __construct() {}
 
     public function openHardcoreUI($player) {
         $form = new SimpleForm(function(Player $player, int $data = null){
