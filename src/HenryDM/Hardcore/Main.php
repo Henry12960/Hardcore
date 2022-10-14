@@ -26,7 +26,7 @@ class Main extends PluginBase implements Listener {
     private static Main|null $instance;
 
     /*** @var JoinForm[] */
-    public JoinForm $joinfom;
+    public JoinForm $joinform;
 
     /*** @var Config */
     public Config $cfg;    
