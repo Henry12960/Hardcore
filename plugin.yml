@@ -1,7 +1,7 @@
 name: Hardcore
 main: HenryDM\Hardcore\Main
 api: [4.0.0]
-version: 1.0.0
+version: 1.1.0
 author: [HenryDM]
 description: An advanced plugin to create a custom hardcore mode on your pocketmine server!
 website: https://github.com/Henry12960
